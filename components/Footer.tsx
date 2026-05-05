@@ -68,7 +68,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Contact */}
+          {/* Contact + Hours */}
           <div>
             <h4 className="text-[#F0EDE6] font-bold text-[13px] mb-6 tracking-[0.2em] uppercase">פרטי קשר</h4>
             <div className="space-y-4 text-sm text-[#9A8E7A]">
@@ -90,6 +90,25 @@ export default function Footer() {
                 וואטסאפ
               </a>
             </div>
+
+            <div className="mt-6">
+              <h4 className="text-[#F0EDE6] font-bold text-[13px] mb-3 tracking-[0.2em] uppercase">שעות פעילות</h4>
+              <div className="space-y-1.5 text-xs">
+                {[
+                  { days: "ראשון – שני", hours: "10:00 – 19:00" },
+                  { days: "שלישי", hours: "סגור" },
+                  { days: "רביעי", hours: "10:00 – 19:30" },
+                  { days: "חמישי", hours: "10:00 – 20:00" },
+                  { days: "שישי", hours: "09:00 – 13:00" },
+                ].map((row) => (
+                  <div key={row.days} className="flex justify-between border-b border-[#1A1410] pb-1.5 last:border-0 last:pb-0">
+                    <span className="text-[#9A8E7A]">{row.days}</span>
+                    <span className={`font-semibold ${row.hours === "סגור" ? "text-[#9A8E7A] line-through decoration-[#9A8E7A]/40" : "text-[#C9A84C]"}`}>{row.hours}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <a
               href="https://calmark.io/p/NFouD"
               target="_blank"

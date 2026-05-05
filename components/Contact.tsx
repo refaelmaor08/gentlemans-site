@@ -96,13 +96,15 @@ export default function Contact() {
                   <h3 className="text-[#F0EDE6] font-bold mb-4 text-base">שעות פעילות</h3>
                   <div className="space-y-2.5 text-sm">
                     {[
-                      { days: "ראשון – חמישי", hours: "09:00 – 20:00" },
-                      { days: "שישי", hours: "09:00 – 15:00" },
-                      { days: "שבת", hours: "סגור" },
+                      { days: "ראשון – שני", hours: "10:00 – 19:00" },
+                      { days: "שלישי", hours: "סגור" },
+                      { days: "רביעי", hours: "10:00 – 19:30" },
+                      { days: "חמישי", hours: "10:00 – 20:00" },
+                      { days: "שישי", hours: "09:00 – 13:00" },
                     ].map((row) => (
                       <div key={row.days} className="flex justify-between border-b border-[#231D17] pb-2 last:border-0 last:pb-0">
                         <span className="text-[#9A8E7A]">{row.days}</span>
-                        <span className={`font-semibold ${row.hours === "סגור" ? "text-[#9A8E7A]" : "text-[#C9A84C]"}`}>{row.hours}</span>
+                        <span className={`font-semibold ${row.hours === "סגור" ? "text-[#9A8E7A] line-through decoration-[#9A8E7A]/40" : "text-[#C9A84C]"}`}>{row.hours}</span>
                       </div>
                     ))}
                   </div>
