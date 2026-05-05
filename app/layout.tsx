@@ -20,6 +20,7 @@ const playfair = Playfair_Display({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://gentlemans-tlv.com";
 
 export const metadata: Metadata = {
+  themeColor: "#0A0806",
   metadataBase: new URL(siteUrl),
   title: "GENTLEMAN'S TLV | מספרת גברים יוקרתית – דיזנגוף תל אביב",
   description:
