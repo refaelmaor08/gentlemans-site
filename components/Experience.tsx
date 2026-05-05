@@ -25,11 +25,13 @@ export default function Experience() {
       {/* Full bleed shop image as background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/shop.png"
+          src="/images/shop.webp"
           alt="GENTLEMAN'S TLV — האווירה"
           fill
+          loading="lazy"
           className="object-cover object-center"
-          quality={90}
+          quality={82}
+          sizes="100vw"
         />
         {/* Heavy dark overlay + warm amber tint */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0806]/70 via-[#0A0806]/65 to-[#0A0806]/80" />

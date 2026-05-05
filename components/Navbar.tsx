@@ -37,7 +37,7 @@ export default function Navbar() {
           <div className="relative flex-shrink-0" style={{ width: 48, height: 48 }}>
             <div className="w-12 h-12 rounded-full overflow-hidden border border-[#C9A84C]/30 group-hover:border-[#C9A84C]/70 transition-all duration-400 shadow-[0_0_15px_rgba(201,168,76,0.15)]">
               <Image
-                src="/images/logo.jpg"
+                src="/images/logo.webp"
                 alt="GENTLEMAN'S TLV"
                 width={48}
                 height={48}

@@ -17,12 +17,13 @@ export default function Hero() {
       {/* ── Background: real shop image ── */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero.png"
+          src="/images/hero.webp"
           alt="GENTLEMAN'S TLV — מספרת גברים יוקרתית"
           fill
           className="object-cover object-center"
           priority
-          quality={95}
+          quality={85}
+          sizes="100vw"
         />
         {/* Rich layered overlay: dark base + warm light from above */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0806]/75 via-[#0A0806]/40 to-[#0A0806]/92" />

@@ -17,11 +17,12 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-5">
               <div className="w-11 h-11 rounded-full overflow-hidden border border-[#C9A84C]/30 flex-shrink-0">
                 <Image
-                  src="/images/logo.jpg"
+                  src="/images/logo.webp"
                   alt="GENTLEMAN'S TLV"
                   width={44}
                   height={44}
                   className="object-cover w-full h-full"
+                  loading="lazy"
                 />
               </div>
               <div>

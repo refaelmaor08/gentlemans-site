@@ -4,11 +4,11 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const galleryImages = [
-  { src: "/images/fade1.png", alt: "עבודה של GENTLEMAN'S TLV" },
-  { src: "/images/fade2.png", alt: "עבודה של GENTLEMAN'S TLV" },
-  { src: "/images/fade3.jpg", alt: "עבודה של GENTLEMAN'S TLV" },
-  { src: "/images/fade4.jpg", alt: "עבודה של GENTLEMAN'S TLV" },
-  { src: "/images/fade5.jpg", alt: "עבודה של GENTLEMAN'S TLV" },
+  { src: "/images/fade1.webp", alt: "עבודה של GENTLEMAN'S TLV" },
+  { src: "/images/fade2.webp", alt: "עבודה של GENTLEMAN'S TLV" },
+  { src: "/images/fade3.webp", alt: "עבודה של GENTLEMAN'S TLV" },
+  { src: "/images/fade4.webp", alt: "עבודה של GENTLEMAN'S TLV" },
+  { src: "/images/fade5.webp", alt: "עבודה של GENTLEMAN'S TLV" },
 ];
 
 export default function Gallery() {
@@ -74,8 +74,9 @@ export default function Gallery() {
               src={galleryImages[0].src}
               alt={galleryImages[0].alt}
               fill
+              loading="lazy"
               className="object-cover transition-transform duration-700 group-hover:scale-[1.07]"
-              quality={90}
+              quality={80}
               sizes="(max-width: 768px) 50vw, 33vw"
             />
             <GalleryOverlay />
@@ -95,8 +96,9 @@ export default function Gallery() {
                 src={galleryImages[i].src}
                 alt={galleryImages[i].alt}
                 fill
+                loading="lazy"
                 className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
-                quality={85}
+                quality={80}
                 sizes="(max-width: 768px) 50vw, 33vw"
               />
               <GalleryOverlay />
@@ -117,8 +119,9 @@ export default function Gallery() {
                 src={galleryImages[i].src}
                 alt={galleryImages[i].alt}
                 fill
+                loading="lazy"
                 className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
-                quality={85}
+                quality={80}
                 sizes="(max-width: 768px) 50vw, 33vw"
               />
               <GalleryOverlay />

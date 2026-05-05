@@ -61,11 +61,12 @@ export default function About() {
             {/* Image */}
             <div className="relative z-10 overflow-hidden rounded-sm" style={{ aspectRatio: "4/5" }}>
               <Image
-                src="/images/shop.png"
+                src="/images/shop.webp"
                 alt="GENTLEMAN'S TLV — הצוות"
                 fill
+                loading="lazy"
                 className="object-cover hover:scale-[1.04] transition-transform duration-800"
-                quality={90}
+                quality={82}
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               {/* Warm overlay at bottom */}
