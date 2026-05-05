@@ -17,16 +17,27 @@ const playfair = Playfair_Display({
   style: ["normal", "italic"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://gentlemans-tlv.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "GENTLEMAN'S TLV | מספרת גברים יוקרתית – דיזנגוף תל אביב",
   description:
     "מספרת גברים יוקרתית בדיזנגוף 237, תל אביב. תספורות גברים, פיידים, עיצוב זקן וסטייל אישי ברמה הגבוהה ביותר. קבע תור עכשיו.",
   keywords: "מספרת גברים תל אביב, barbershop tel aviv, פייד, תספורת גברים, דיזנגוף, היי פייד, עיצוב זקן",
   openGraph: {
-    title: "GENTLEMAN'S TLV | מספרת גברים יוקרתית",
-    description: "מספרת גברים יוקרתית בדיזנגוף, תל אביב. קבע תור עכשיו.",
+    title: "Gentlemans TLV – Barbershop",
+    description: "מספרת גברים יוקרתית בתל אביב. קביעת תורים אונליין.",
+    url: siteUrl,
+    siteName: "Gentlemans TLV",
     locale: "he_IL",
     type: "website",
+    images: [
+      {
+        url: "/images/logo.jpg",
+        alt: "Gentlemans TLV – Barbershop",
+      },
+    ],
   },
 };
 
