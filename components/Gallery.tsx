@@ -48,16 +48,15 @@ export default function Gallery() {
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="gold-line" />
             <span className="text-[#C9A84C] tracking-[0.35em] text-[11px] uppercase font-medium">
-              גלריית עבודות
+              העבודות שלנו
             </span>
             <div className="gold-line" />
           </div>
           <h2 className="text-3xl md:text-5xl font-black text-[#F0EDE6]">
-            עבודות של{" "}
-            <span className="text-gold-gradient">GENTLEMAN&apos;S</span>
+            <span className="text-gold-gradient">העבודות שלנו</span>
           </h2>
           <p className="text-[#9A8E7A] mt-4 text-sm max-w-md mx-auto">
-            כל תמונה כאן היא עבודה אמיתית מהמספרה שלנו.
+            תוצאות אמיתיות מהכיסאות של GENTLEMAN&apos;S TLV
           </p>
         </div>
 
@@ -65,7 +64,7 @@ export default function Gallery() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
           {/* Large featured — spans 2 rows on left (RTL: first in DOM) */}
           <div
-            className={`relative overflow-hidden rounded-sm cursor-pointer group row-span-2 col-span-1
+            className={`relative overflow-hidden rounded-sm cursor-pointer group row-span-2 col-span-1 tilt-hover gold-shimmer-border
               transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
             style={{ minHeight: "460px" }}
             onClick={() => setLightbox(galleryImages[0].src)}
@@ -130,17 +129,32 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* CTA */}
+        {/* CTAs */}
         <div className={`text-center mt-14 transition-all duration-700 delay-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <p className="text-[#9A8E7A] text-sm mb-5">הגיע הזמן שגם התספורת שלך תיראה ככה</p>
-          <a
-            href="https://calmark.io/p/NFouD"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-gold inline-block px-12 py-4 text-base font-black rounded-sm tracking-[0.12em]"
-          >
-            קבע תור עכשיו
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://calmark.io/p/NFouD"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold inline-block px-12 py-4 text-base font-black rounded-sm tracking-[0.12em]"
+            >
+              קבע תור עכשיו
+            </a>
+            <a
+              href="https://www.instagram.com/gentlemanstlv?igsh=MWhvYzZ3OTlydDl2eQ=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-8 py-4 border border-[#C9A84C]/35 text-[#C9A84C] text-sm font-bold rounded-sm tracking-wide hover:bg-[#C9A84C]/8 hover:border-[#C9A84C]/70 transition-all duration-300"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+              </svg>
+              הצצה לעבודות שלנו באינסטגרם
+            </a>
+          </div>
         </div>
       </div>
 

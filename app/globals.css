@@ -122,18 +122,6 @@ body {
   box-shadow: 0 0 25px rgba(201,168,76,0.22);
 }
 
-/* ── Cards ── */
-.card-luxury {
-  background: var(--black-card);
-  border: 1px solid var(--black-border);
-  transition: all 0.45s ease;
-}
-.card-luxury:hover {
-  border-color: rgba(201,168,76,0.4);
-  box-shadow: 0 25px 70px rgba(0,0,0,0.65), 0 0 35px rgba(201,148,50,0.07);
-  transform: translateY(-5px);
-}
-
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--black); }
@@ -170,6 +158,85 @@ body {
   pointer-events: none;
   opacity: 0.07;
   filter: blur(0.5px);
+}
+
+/* ── Premium 3D / Glassmorphism ── */
+.glass-card {
+  background: rgba(22, 18, 16, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(201, 168, 76, 0.08);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.glass-card:hover {
+  border-color: rgba(201, 168, 76, 0.28);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(201, 148, 50, 0.1),
+    inset 0 1px 0 rgba(201, 168, 76, 0.15);
+  transform: translateY(-4px) translateZ(0);
+}
+
+/* Gold glow ambient */
+.gold-glow-ambient {
+  box-shadow: 0 0 60px rgba(201, 148, 50, 0.08), 0 0 120px rgba(201, 148, 50, 0.04);
+}
+
+/* Layered depth shadow for sections */
+.depth-shadow {
+  box-shadow:
+    0 4px 6px rgba(0,0,0,0.07),
+    0 10px 15px rgba(0,0,0,0.1),
+    0 20px 25px rgba(0,0,0,0.06);
+}
+
+/* 3D tilt on hover — gallery items */
+.tilt-hover {
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
+}
+.tilt-hover:hover {
+  transform: perspective(800px) rotateY(1.5deg) rotateX(-1deg) translateY(-5px);
+  box-shadow: 12px 24px 48px rgba(0,0,0,0.55), 0 0 30px rgba(201,148,50,0.08);
+}
+
+/* Subtle parallax shimmer on cards */
+@keyframes gold-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.gold-shimmer-border {
+  position: relative;
+}
+.gold-shimmer-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(110deg, transparent 40%, rgba(201,168,76,0.12) 50%, transparent 60%);
+  background-size: 200% 100%;
+  animation: gold-shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Enhanced card-luxury with depth */
+.card-luxury {
+  background: var(--black-card);
+  border: 1px solid var(--black-border);
+  transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+.card-luxury:hover {
+  border-color: rgba(201,168,76,0.4);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,0.65),
+    0 0 35px rgba(201,148,50,0.07),
+    inset 0 1px 0 rgba(201,168,76,0.08);
+  transform: translateY(-5px) translateZ(0);
 }
 
 /* ── Mobile performance: reduce heavy animations ── */

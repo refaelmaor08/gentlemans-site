@@ -74,6 +74,15 @@ export default function Navbar() {
             </a>
           ))}
           <a
+            href="https://www.instagram.com/gentlemanstlv?igsh=MWhvYzZ3OTlydDl2eQ=="
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="אינסטגרם"
+            className="text-[#9A8E7A] hover:text-[#C9A84C] transition-colors duration-300"
+          >
+            <InstagramIcon />
+          </a>
+          <a
             href="https://calmark.io/p/NFouD"
             target="_blank"
             rel="noopener noreferrer"
@@ -109,6 +118,16 @@ export default function Navbar() {
             </a>
           ))}
           <a
+            href="https://www.instagram.com/gentlemanstlv?igsh=MWhvYzZ3OTlydDl2eQ=="
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="flex items-center gap-3 text-[#9A8E7A] hover:text-[#C9A84C] transition-colors duration-300 border-b border-[#231D17] pb-5"
+          >
+            <InstagramIcon />
+            <span className="text-xl font-medium">אינסטגרם</span>
+          </a>
+          <a
             href="https://calmark.io/p/NFouD"
             target="_blank"
             rel="noopener noreferrer"
@@ -120,5 +139,15 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+    </svg>
   );
 }

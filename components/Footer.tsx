@@ -90,6 +90,15 @@ export default function Footer() {
                 <span className="text-[#C9A84C] mt-0.5 flex-shrink-0">✦</span>
                 וואטסאפ
               </a>
+              <a
+                href="https://www.instagram.com/gentlemanstlv?igsh=MWhvYzZ3OTlydDl2eQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-[#C9A84C] transition-colors"
+              >
+                <span className="text-[#C9A84C] mt-0.5 flex-shrink-0">✦</span>
+                עקבו אחרינו באינסטגרם
+              </a>
             </div>
 
             <div className="mt-6">
@@ -123,8 +132,22 @@ export default function Footer() {
 
         <div className="gold-line-full mb-8" />
 
+        {/* Accessibility note */}
+        <p className="text-[#9A8E7A]/60 text-xs text-center max-w-2xl mx-auto mb-6 leading-relaxed">
+          <span className="text-[#C9A84C]/70 font-semibold">נגישות:</span>{" "}
+          אנחנו עושים מאמץ להעניק שירות נוח ונגיש לכל לקוח. אם יש צורך בהתאמה מיוחדת, ניתן ליצור איתנו קשר לפני ההגעה ונשמח לסייע ככל האפשר.
+        </p>
+
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-[#9A8E7A] text-xs">
           <p>© 2024 GENTLEMAN&apos;S TLV · כל הזכויות שמורות</p>
+          <a
+            href="https://www.instagram.com/gentlemanstlv?igsh=MWhvYzZ3OTlydDl2eQ=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#C9A84C]/50 hover:text-[#C9A84C] transition-colors duration-300"
+          >
+            @gentlemanstlv
+          </a>
           <p className="text-[#C9A84C]/30">דיזנגוף 237, תל אביב</p>
         </div>
       </div>
