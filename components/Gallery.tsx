@@ -19,7 +19,7 @@ export default function Gallery() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.08 }
+      { threshold: 0.06 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -37,10 +37,28 @@ export default function Gallery() {
       ref={sectionRef}
       className="relative py-28 px-4 overflow-hidden"
     >
-      <div className="absolute inset-0" style={{ background: "var(--black)" }} />
+      {/* Background */}
+      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #0A0806 0%, #0E0B08 50%, #0A0806 100%)" }} />
       <div className="absolute inset-0 wood-texture" />
-      {/* Warm center glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full bg-[#C9A84C]/4 blur-[130px] pointer-events-none" />
+
+      {/* Strong overhead spotlight */}
+      <div className="absolute top-0 left-0 right-0 h-[500px] gold-spotlight pointer-events-none" />
+
+      {/* Warm center ambient */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] rounded-full bg-[#C9A84C]/5 blur-[140px] pointer-events-none" />
+
+      {/* Gold beam */}
+      <div className="gold-beam beam-drift absolute top-0 left-[25%] w-[250px] h-full -skew-x-8 pointer-events-none" />
+
+      {/* Plant decorations */}
+      <svg className="plant-accent absolute -bottom-6 -right-6 w-72 h-72 text-[#3D5A3E]" viewBox="0 0 220 220" fill="currentColor">
+        <path d="M210,210 Q160,140 90,70 Q140,120 110,170 Q155,145 210,210Z" opacity="0.9"/>
+        <path d="M220,185 Q175,115 105,50 Q150,100 125,155 Q165,128 220,185Z" opacity="0.5"/>
+      </svg>
+      <svg className="plant-accent absolute -top-6 -left-6 w-56 h-56 text-[#4A7C59]" viewBox="0 0 180 180" fill="currentColor">
+        <path d="M10,170 Q55,95 120,30 Q80,85 95,135 Q55,110 10,170Z" opacity="0.8"/>
+        <path d="M5,145 Q40,75 100,20 Q65,70 78,118 Q45,96 5,145Z" opacity="0.4"/>
+      </svg>
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
@@ -60,13 +78,14 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Gallery grid — premium layout */}
+        {/* Premium gallery grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {/* Large featured — spans 2 rows on left (RTL: first in DOM) */}
+          {/* Large featured — 2 rows */}
           <div
-            className={`relative overflow-hidden rounded-sm cursor-pointer group row-span-2 col-span-1 tilt-hover gold-shimmer-border
-              transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
-            style={{ minHeight: "460px" }}
+            className={`relative overflow-hidden rounded-sm cursor-pointer group row-span-2 col-span-1
+              gallery-frame tilt-hover gold-shimmer-border
+              transition-all duration-800 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-[0.93]"}`}
+            style={{ minHeight: "480px" }}
             onClick={() => setLightbox(galleryImages[0].src)}
           >
             <Image
@@ -74,12 +93,14 @@ export default function Gallery() {
               alt={galleryImages[0].alt}
               fill
               loading="lazy"
-              className="object-cover transition-transform duration-700 group-hover:scale-[1.07]"
-              quality={80}
+              className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
+              quality={85}
               sizes="(max-width: 768px) 50vw, 33vw"
             />
             <GalleryOverlay />
             <GoldCorner />
+            {/* Deep bottom gradient */}
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#0A0806]/70 to-transparent pointer-events-none" />
           </div>
 
           {/* Middle two stacked */}
@@ -87,8 +108,9 @@ export default function Gallery() {
             <div
               key={i}
               className={`relative overflow-hidden rounded-sm cursor-pointer group col-span-1
-                transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
-              style={{ height: "222px", transitionDelay: `${i * 100}ms` }}
+                gallery-frame
+                transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-[0.94]"}`}
+              style={{ height: "230px", transitionDelay: `${i * 100}ms` }}
               onClick={() => setLightbox(galleryImages[i].src)}
             >
               <Image
@@ -96,8 +118,8 @@ export default function Gallery() {
                 alt={galleryImages[i].alt}
                 fill
                 loading="lazy"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
-                quality={80}
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.1]"
+                quality={85}
                 sizes="(max-width: 768px) 50vw, 33vw"
               />
               <GalleryOverlay />
@@ -105,13 +127,14 @@ export default function Gallery() {
             </div>
           ))}
 
-          {/* Bottom row: two more filling remaining 2 cols */}
+          {/* Bottom row */}
           {[3, 4].map((i) => (
             <div
               key={i}
               className={`relative overflow-hidden rounded-sm cursor-pointer group col-span-1
-                transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
-              style={{ height: "230px", transitionDelay: `${i * 80}ms` }}
+                gallery-frame
+                transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-[0.94]"}`}
+              style={{ height: "238px", transitionDelay: `${i * 80}ms` }}
               onClick={() => setLightbox(galleryImages[i].src)}
             >
               <Image
@@ -119,8 +142,8 @@ export default function Gallery() {
                 alt={galleryImages[i].alt}
                 fill
                 loading="lazy"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
-                quality={80}
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.1]"
+                quality={85}
                 sizes="(max-width: 768px) 50vw, 33vw"
               />
               <GalleryOverlay />
@@ -130,8 +153,8 @@ export default function Gallery() {
         </div>
 
         {/* CTAs */}
-        <div className={`text-center mt-14 transition-all duration-700 delay-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <p className="text-[#9A8E7A] text-sm mb-5">הגיע הזמן שגם התספורת שלך תיראה ככה</p>
+        <div className={`text-center mt-16 transition-all duration-700 delay-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <p className="text-[#9A8E7A] text-sm mb-6">הגיע הזמן שגם התספורת שלך תיראה ככה</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="https://calmark.io/p/NFouD"
@@ -193,9 +216,9 @@ export default function Gallery() {
 function GalleryOverlay() {
   return (
     <>
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0806]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-        <div className="bg-[#C9A84C] text-[#0A0806] p-3 rounded-sm shadow-xl">
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0806]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400 scale-90 group-hover:scale-100">
+        <div className="bg-[#C9A84C] text-[#0A0806] p-3.5 rounded-sm shadow-[0_0_30px_rgba(201,168,76,0.5)]">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
           </svg>
@@ -208,8 +231,8 @@ function GalleryOverlay() {
 function GoldCorner() {
   return (
     <>
-      <div className="absolute top-2.5 right-2.5 w-4 h-4 border-t border-r border-[#C9A84C]/55 pointer-events-none" />
-      <div className="absolute bottom-2.5 left-2.5 w-4 h-4 border-b border-l border-[#C9A84C]/55 pointer-events-none" />
+      <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#C9A84C]/60 pointer-events-none" />
+      <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#C9A84C]/60 pointer-events-none" />
     </>
   );
 }

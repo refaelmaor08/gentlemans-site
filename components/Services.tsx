@@ -48,19 +48,19 @@ export default function Services() {
       ref={sectionRef}
       className="relative py-28 px-4 overflow-hidden"
     >
-      {/* Atmospheric bg */}
+      {/* Background */}
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #110D0A 0%, #0A0806 100%)" }} />
       <div className="absolute inset-0 wood-texture" />
-      {/* Left warm glow */}
-      <div className="absolute top-1/3 left-0 w-[400px] h-[400px] rounded-full bg-[#C9A84C]/5 blur-[110px] pointer-events-none" />
-      {/* Plant accent right */}
-      <svg
-        className="plant-accent absolute bottom-0 right-0 w-56 h-56 text-[#3D5A3E]"
-        viewBox="0 0 200 200"
-        fill="currentColor"
-      >
-        <path d="M180,190 Q140,120 80,60 Q120,110 100,160 Q140,130 180,190Z" opacity="0.9"/>
-        <path d="M190,170 Q160,100 100,40 Q130,90 115,140 Q150,115 190,170Z" opacity="0.5"/>
+
+      {/* Spotlight and beams */}
+      <div className="absolute top-0 left-0 right-0 h-[400px] gold-spotlight pointer-events-none" />
+      <div className="absolute top-1/3 left-0 w-[450px] h-[450px] rounded-full bg-[#C9A84C]/5 blur-[120px] pointer-events-none" />
+      <div className="gold-beam beam-drift2 absolute top-0 right-[35%] w-[160px] h-full pointer-events-none -skew-x-5" />
+
+      {/* Plant accent */}
+      <svg className="plant-accent absolute bottom-0 right-0 w-64 h-64 text-[#3D5A3E]" viewBox="0 0 200 200" fill="currentColor">
+        <path d="M190,200 Q145,125 80,60 Q130,105 105,155 Q145,128 190,200Z" opacity="0.9"/>
+        <path d="M200,175 Q160,105 95,45 Q140,90 118,140 Q155,115 200,175Z" opacity="0.5"/>
       </svg>
 
       <div className="relative max-w-6xl mx-auto">
@@ -82,14 +82,14 @@ export default function Services() {
           </p>
         </div>
 
-        {/* 2×2 premium cards */}
+        {/* 2×2 glass cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, i) => (
             <ServiceCard key={i} service={service} index={i} visible={visible} />
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        {/* CTA */}
         <div className={`text-center mt-16 transition-all duration-700 delay-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <a
             href="https://calmark.io/p/NFouD"
@@ -118,28 +118,31 @@ function ServiceCard({
 
   return (
     <div
-      className={`relative p-8 md:p-10 rounded-sm border overflow-hidden cursor-default
-        transition-all duration-500
-        ${hovered ? "border-[#C9A84C]/40 shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_30px_rgba(201,148,50,0.07)]" : "border-[#231D17] bg-[#161210]"}
-        ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+      className={`glass-panel relative p-9 md:p-10 rounded-sm overflow-hidden cursor-default
+        transition-all duration-600
+        ${hovered ? "" : ""}
+        ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
       `}
-      style={{ transitionDelay: `${index * 120}ms`, background: hovered ? "#181410" : undefined }}
+      style={{ transitionDelay: `${index * 120}ms` }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Warm corner glow on hover */}
+      {/* Corner glow */}
       <div
-        className={`absolute top-0 right-0 w-40 h-40 rounded-full bg-[#C9A84C]/8 blur-[50px] transition-opacity duration-500 ${hovered ? "opacity-100" : "opacity-0"}`}
+        className={`absolute top-0 right-0 w-48 h-48 rounded-full bg-[#C9A84C]/7 blur-[60px] transition-opacity duration-500 ${hovered ? "opacity-100" : "opacity-40"}`}
+      />
+      <div
+        className={`absolute bottom-0 left-0 w-24 h-24 rounded-full bg-[#C9A84C]/4 blur-[40px] transition-opacity duration-500 ${hovered ? "opacity-100" : "opacity-0"}`}
       />
 
       <div className="relative">
-        {/* Icon + tag row */}
-        <div className="flex items-start justify-between mb-6">
-          <div className={`text-[#C9A84C] p-3.5 border rounded-sm transition-all duration-400 ${hovered ? "border-[#C9A84C]/40 bg-[#C9A84C]/10" : "border-[#C9A84C]/20 bg-[#C9A84C]/5"}`}>
+        {/* Icon + tag */}
+        <div className="flex items-start justify-between mb-7">
+          <div className={`text-[#C9A84C] p-4 border rounded-sm transition-all duration-400 shadow-[0_0_20px_rgba(201,148,50,0.15)] ${hovered ? "border-[#C9A84C]/45 bg-[#C9A84C]/12" : "border-[#C9A84C]/22 bg-[#C9A84C]/7"}`}>
             {service.icon}
           </div>
           {service.tag && (
-            <span className="text-[11px] px-3 py-1.5 bg-[#C9A84C]/12 text-[#C9A84C] border border-[#C9A84C]/25 rounded-sm font-bold tracking-wide">
+            <span className="text-[11px] px-3 py-1.5 bg-[#C9A84C]/12 text-[#C9A84C] border border-[#C9A84C]/28 rounded-sm font-bold tracking-wide">
               {service.tag}
             </span>
           )}
@@ -148,8 +151,8 @@ function ServiceCard({
         <h3 className="text-[#F0EDE6] text-2xl font-black mb-4">{service.title}</h3>
         <p className="text-[#9A8E7A] text-[15px] leading-relaxed">{service.desc}</p>
 
-        {/* Bottom accent line */}
-        <div className={`mt-8 h-px transition-all duration-500 ${hovered ? "bg-gradient-to-r from-[#C9A84C]/60 via-[#C9A84C]/30 to-transparent w-full" : "bg-[#231D17] w-16"}`} />
+        {/* Bottom accent */}
+        <div className={`mt-9 h-px transition-all duration-500 ${hovered ? "bg-gradient-to-r from-[#C9A84C]/70 via-[#C9A84C]/30 to-transparent w-full" : "bg-[#C9A84C]/15 w-14"}`} />
       </div>
     </div>
   );
@@ -162,7 +165,6 @@ function CutIcon() {
     </svg>
   );
 }
-
 function FadeIcon() {
   return (
     <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
@@ -170,7 +172,6 @@ function FadeIcon() {
     </svg>
   );
 }
-
 function BeardIcon() {
   return (
     <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
@@ -178,7 +179,6 @@ function BeardIcon() {
     </svg>
   );
 }
-
 function StyleConsultIcon() {
   return (
     <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>

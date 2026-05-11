@@ -156,110 +156,202 @@ body {
 .plant-accent {
   position: absolute;
   pointer-events: none;
-  opacity: 0.07;
-  filter: blur(0.5px);
+  opacity: 0.13;
+  filter: blur(0.3px);
 }
 
-/* ── Premium 3D / Glassmorphism ── */
-.glass-card {
-  background: rgba(22, 18, 16, 0.65);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(201, 168, 76, 0.12);
+/* ── PREMIUM GLASS PANELS ── */
+.glass-panel {
+  background: rgba(13, 10, 8, 0.72);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(201, 168, 76, 0.14);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.55),
-    0 2px 8px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(201, 168, 76, 0.08);
+    0 8px 40px rgba(0, 0, 0, 0.65),
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(201, 168, 76, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.glass-card:hover {
-  border-color: rgba(201, 168, 76, 0.28);
+.glass-panel:hover {
+  background: rgba(18, 14, 11, 0.8);
+  border-color: rgba(201, 168, 76, 0.32);
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.7),
-    0 0 40px rgba(201, 148, 50, 0.1),
-    inset 0 1px 0 rgba(201, 168, 76, 0.15);
-  transform: translateY(-4px) translateZ(0);
+    0 28px 80px rgba(0, 0, 0, 0.75),
+    0 0 55px rgba(201, 148, 50, 0.12),
+    inset 0 1px 0 rgba(201, 168, 76, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  transform: translateY(-8px) translateZ(0);
 }
 
-/* Gold glow ambient */
-.gold-glow-ambient {
-  box-shadow: 0 0 60px rgba(201, 148, 50, 0.08), 0 0 120px rgba(201, 148, 50, 0.04);
-}
+/* glass-card kept for backwards compat */
+.glass-card { background: rgba(22, 18, 16, 0.65); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(201,168,76,0.12); box-shadow: 0 8px 32px rgba(0,0,0,0.55), inset 0 1px 0 rgba(201,168,76,0.08); transition: all 0.5s cubic-bezier(0.23,1,0.32,1); }
+.glass-card:hover { border-color: rgba(201,168,76,0.28); box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(201,148,50,0.1), inset 0 1px 0 rgba(201,168,76,0.15); transform: translateY(-4px) translateZ(0); }
 
-/* Layered depth shadow for sections */
-.depth-shadow {
+/* ── ENHANCED CARD-LUXURY ── */
+.card-luxury {
+  background: linear-gradient(135deg, #181410 0%, #141008 100%);
+  border: 1px solid var(--black-border);
+  transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+.card-luxury:hover {
+  border-color: rgba(201,168,76,0.4);
   box-shadow:
-    0 4px 6px rgba(0,0,0,0.07),
-    0 10px 15px rgba(0,0,0,0.1),
-    0 20px 25px rgba(0,0,0,0.06);
+    0 28px 80px rgba(0,0,0,0.68),
+    0 0 45px rgba(201,148,50,0.09),
+    inset 0 1px 0 rgba(201,168,76,0.1);
+  transform: translateY(-6px) translateZ(0);
 }
 
-/* 3D tilt on hover — gallery items */
-.tilt-hover {
-  transform-style: preserve-3d;
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
+/* ── GOLD LIGHT BEAMS ── */
+.gold-beam {
+  background: linear-gradient(180deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.04) 50%, transparent 100%);
+  filter: blur(1px);
+  pointer-events: none;
 }
-.tilt-hover:hover {
-  transform: perspective(800px) rotateY(1.5deg) rotateX(-1deg) translateY(-5px);
-  box-shadow: 12px 24px 48px rgba(0,0,0,0.55), 0 0 30px rgba(201,148,50,0.08);
+.gold-beam-wide {
+  background: linear-gradient(170deg, rgba(212,146,42,0.1) 0%, rgba(201,168,76,0.04) 40%, transparent 80%);
+  filter: blur(2px);
+  pointer-events: none;
+}
+@keyframes beam-drift {
+  0%,100% { opacity: 0.55; transform: skewX(-6deg) translateX(0); }
+  50%      { opacity: 1;    transform: skewX(-6deg) translateX(10px); }
+}
+.beam-drift  { animation: beam-drift 9s ease-in-out infinite; }
+.beam-drift2 { animation: beam-drift 13s ease-in-out infinite 3s; }
+
+/* ── CINEMATIC SPOTLIGHT ── */
+.gold-spotlight {
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,148,50,0.2) 0%, rgba(201,148,50,0.06) 45%, transparent 72%);
+}
+.gold-spotlight-side-r {
+  background: radial-gradient(ellipse 50% 80% at 100% 50%, rgba(201,148,50,0.14) 0%, transparent 65%);
+}
+.gold-spotlight-side-l {
+  background: radial-gradient(ellipse 50% 80% at 0% 50%, rgba(201,148,50,0.1) 0%, transparent 65%);
 }
 
-/* Subtle parallax shimmer on cards */
-@keyframes gold-shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+/* ── 3D HOVER CARDS ── */
+.card-3d {
+  transition: transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.55s ease;
+  will-change: transform;
 }
-.gold-shimmer-border {
+.card-3d:hover {
+  transform: perspective(900px) rotateY(2deg) rotateX(-1.5deg) translateY(-9px) scale(1.01);
+  box-shadow:
+    22px 44px 90px rgba(0,0,0,0.65),
+    0 0 50px rgba(201,148,50,0.12),
+    -10px 0 30px rgba(0,0,0,0.25);
+}
+
+/* ── GALLERY GOLD RING HOVER ── */
+.gallery-frame {
   position: relative;
 }
+.gallery-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 0px rgba(201,168,76,0);
+  transition: box-shadow 0.45s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+.gallery-frame:hover::after {
+  box-shadow: inset 0 0 0 2px rgba(201,168,76,0.55), 0 0 70px rgba(201,148,50,0.18);
+}
+
+/* ── PARALLAX INNER ── */
+.parallax-bg {
+  will-change: transform;
+  transform: scale(1.18);
+}
+
+/* ── TEXT DEPTH (cinematic headings) ── */
+.text-depth {
+  text-shadow: 0 2px 14px rgba(0,0,0,0.95), 0 4px 28px rgba(0,0,0,0.7), 0 1px 3px #000;
+}
+
+/* ── FLOATING ORNAMENT ── */
+@keyframes ornament-float {
+  0%,100% { transform: translateY(0) rotate(0deg); opacity: 0.22; }
+  50%     { transform: translateY(-14px) rotate(2deg); opacity: 0.32; }
+}
+.float-ornament { animation: ornament-float 8s ease-in-out infinite; }
+.float-ornament-slow { animation: ornament-float 12s ease-in-out infinite 2s; }
+
+/* ── GOLD GLOW UTILITIES ── */
+.gold-glow-ambient {
+  box-shadow: 0 0 60px rgba(201,148,50,0.08), 0 0 120px rgba(201,148,50,0.04);
+}
+.depth-shadow {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.07), 0 10px 15px rgba(0,0,0,0.1), 0 20px 25px rgba(0,0,0,0.06);
+}
+
+/* ── GOLD SHIMMER SWEEP ── */
+@keyframes gold-shimmer {
+  0%   { background-position: -220% center; }
+  100% { background-position: 220% center; }
+}
+.gold-shimmer-border { position: relative; }
 .gold-shimmer-border::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(110deg, transparent 40%, rgba(201,168,76,0.12) 50%, transparent 60%);
-  background-size: 200% 100%;
-  animation: gold-shimmer 4s ease-in-out infinite;
+  background: linear-gradient(110deg, transparent 38%, rgba(201,168,76,0.14) 50%, transparent 62%);
+  background-size: 220% 100%;
+  animation: gold-shimmer 5s ease-in-out infinite;
   pointer-events: none;
 }
 
-/* Enhanced card-luxury with depth */
-.card-luxury {
-  background: var(--black-card);
-  border: 1px solid var(--black-border);
-  transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.02);
+/* ── TILT HOVER (gallery large) ── */
+.tilt-hover {
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
 }
-.card-luxury:hover {
-  border-color: rgba(201,168,76,0.4);
-  box-shadow:
-    0 25px 70px rgba(0,0,0,0.65),
-    0 0 35px rgba(201,148,50,0.07),
-    inset 0 1px 0 rgba(201,168,76,0.08);
-  transform: translateY(-5px) translateZ(0);
+.tilt-hover:hover {
+  transform: perspective(900px) rotateY(1.8deg) rotateX(-1deg) translateY(-6px);
+  box-shadow: 14px 28px 60px rgba(0,0,0,0.6), 0 0 40px rgba(201,148,50,0.1);
 }
 
-/* ── Mobile performance: reduce heavy animations ── */
+/* ── SCAN LINES atmosphere ── */
+.scan-lines {
+  background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 3px);
+}
+
+/* ── SECTION FOG EDGES ── */
+.fog-top    { background: linear-gradient(180deg, rgba(10,8,6,0.9) 0%, transparent 100%); }
+.fog-bottom { background: linear-gradient(0deg, rgba(10,8,6,0.9) 0%, transparent 100%); }
+
+/* ── Mobile performance ── */
 @media (max-width: 768px) {
-  .animate-pulse-gold {
-    animation: none;
-    box-shadow: 0 0 22px rgba(201,148,50,0.45);
+  .animate-pulse-gold  { animation: none; box-shadow: 0 0 22px rgba(201,148,50,0.45); }
+  .animate-float       { animation: none; }
+  .animate-breathe     { animation: none; }
+  .beam-drift          { animation: none; }
+  .beam-drift2         { animation: none; }
+  .float-ornament      { animation: none; }
+  .float-ornament-slow { animation: none; }
+  .gold-shimmer-border::after { animation: none; }
+
+  /* Disable parallax entirely on mobile — set to static */
+  .parallax-bg { transform: scale(1) !important; }
+
+  /* Keep glass but simpler on mobile */
+  .glass-panel {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
-  .animate-float {
-    animation: none;
-  }
-  .animate-breathe {
-    animation: none;
-  }
-  /* Faster scroll-triggered transitions on mobile */
-  .transition-all {
-    transition-duration: 400ms !important;
-  }
-  /* Disable blur-heavy background elements on mobile */
-  .backdrop-filter {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
+
+  /* Disable 3D card on mobile */
+  .card-3d:hover { transform: translateY(-4px); }
+  .tilt-hover:hover { transform: translateY(-4px); }
+
+  /* Faster transitions */
+  .transition-all { transition-duration: 350ms !important; }
 }
 
 /* Respect reduced motion preference */

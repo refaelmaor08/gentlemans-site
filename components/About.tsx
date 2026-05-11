@@ -29,69 +29,84 @@ export default function About() {
       ref={sectionRef}
       className="relative py-28 px-4 overflow-hidden"
     >
-      {/* Atmospheric background */}
+      {/* Background */}
       <div className="absolute inset-0" style={{ background: "var(--black)" }} />
       <div className="absolute inset-0 wood-texture" />
-      {/* Warm right-side glow */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#C9A84C]/6 blur-[130px] pointer-events-none" />
-      {/* Plant/leaf decorative SVG (top-left corner) */}
+
+      {/* Spotlight and right-side glow */}
+      <div className="absolute top-0 left-0 right-0 h-[300px] gold-spotlight pointer-events-none" />
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#C9A84C]/7 blur-[150px] pointer-events-none" />
+
+      {/* Gold beam */}
+      <div className="gold-beam beam-drift absolute top-0 right-[20%] w-[140px] h-full -skew-x-5 pointer-events-none" />
+
+      {/* Plant / vine decorations */}
+      <svg className="plant-accent absolute -top-10 -left-10 w-80 h-80 text-[#4A7C59]" viewBox="0 0 240 240" fill="currentColor">
+        <path d="M20,220 Q70,135 140,55 Q95,115 118,170 Q70,138 20,220Z" opacity="0.85"/>
+        <path d="M8,195 Q50,110 120,40 Q80,98 100,152 Q58,124 8,195Z" opacity="0.5"/>
+        <path d="M35,235 Q100,160 165,80 Q120,138 140,192 Q95,162 35,235Z" opacity="0.35"/>
+      </svg>
+
+      {/* Floating scissors ornament */}
       <svg
-        className="plant-accent absolute -top-8 -left-8 w-64 h-64 text-[#4A7C59]"
-        viewBox="0 0 200 200"
-        fill="currentColor"
+        className="float-ornament-slow plant-accent absolute bottom-24 right-8 md:right-20 w-12 h-12 text-[#C9A84C]"
+        viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"
+        style={{ opacity: 0.2 }}
       >
-        <path d="M20,180 Q60,100 120,40 Q80,90 100,140 Q60,110 20,180Z" opacity="0.8"/>
-        <path d="M10,160 Q40,80 100,20 Q70,70 85,120 Q50,95 10,160Z" opacity="0.5"/>
-        <path d="M30,190 Q90,130 150,60 Q110,110 120,160 Q80,130 30,190Z" opacity="0.4"/>
+        <circle cx="14" cy="10" r="5" />
+        <circle cx="14" cy="38" r="5" />
+        <line x1="19" y1="12" x2="40" y2="35" />
+        <line x1="19" y1="36" x2="40" y2="13" />
       </svg>
 
       <div className="relative max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-20 items-center">
 
-          {/* Image — right side (RTL first) */}
+          {/* Image column — right side in RTL */}
           <div
-            className={`relative transition-all duration-1000 ${
-              visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-16"
-            }`}
+            className={`relative transition-all duration-1000 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-16"}`}
           >
-            {/* Gold outer frame offset */}
-            <div className="absolute -top-5 -right-5 w-full h-full border border-[#C9A84C]/18 rounded-sm z-0 pointer-events-none" />
-            <div className="absolute -top-2 -right-2 w-full h-full border border-[#C9A84C]/10 rounded-sm z-0 pointer-events-none" />
+            {/* Layered gold frame system */}
+            <div className="absolute -top-7 -right-7 w-full h-full border border-[#C9A84C]/20 rounded-sm z-0 pointer-events-none" />
+            <div className="absolute -top-4 -right-4 w-full h-full border border-[#C9A84C]/12 rounded-sm z-0 pointer-events-none" />
+            <div className="absolute -top-1 -right-1 w-full h-full border border-[#C9A84C]/6  rounded-sm z-0 pointer-events-none" />
+
+            {/* Gold corner brackets on outer frame */}
+            <div className="absolute -top-8 -right-8 w-8 h-8 border-t-2 border-r-2 border-[#C9A84C]/65 z-10 pointer-events-none" />
+            <div className="absolute -bottom-8 -left-8 w-8 h-8 border-b-2 border-l-2 border-[#C9A84C]/65 z-10 pointer-events-none" />
+            <div className="absolute -top-8 -left-8 w-8 h-8 border-t-2 border-l-2 border-[#C9A84C]/30 z-10 pointer-events-none" />
+            <div className="absolute -bottom-8 -right-8 w-8 h-8 border-b-2 border-r-2 border-[#C9A84C]/30 z-10 pointer-events-none" />
 
             {/* Image */}
-            <div className="relative z-10 overflow-hidden rounded-sm" style={{ aspectRatio: "4/5" }}>
+            <div className="relative z-10 overflow-hidden rounded-sm shadow-[0_30px_80px_rgba(0,0,0,0.65),0_0_50px_rgba(201,148,50,0.06)]" style={{ aspectRatio: "4/5" }}>
               <Image
                 src="/images/shop.webp"
                 alt="GENTLEMAN'S TLV — הצוות"
                 fill
                 loading="lazy"
-                className="object-cover hover:scale-[1.04] transition-transform duration-800"
-                quality={82}
+                className="object-cover hover:scale-[1.05] transition-transform duration-1000"
+                quality={85}
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              {/* Warm overlay at bottom */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0806]/60 via-transparent to-transparent" />
-              {/* Warm ambient light at top */}
+              {/* Cinematic overlays on image */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0806]/70 via-transparent to-transparent" />
               <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-[#D4922A]/12 to-transparent" />
+              {/* Side edge vignette */}
+              <div className="absolute inset-0" style={{ boxShadow: "inset 8px 0 30px rgba(10,8,6,0.4), inset -8px 0 30px rgba(10,8,6,0.4)" }} />
             </div>
 
-            {/* TLV badge — bottom-left */}
-            <div className="absolute -bottom-5 -left-5 z-20 bg-gradient-to-br from-[#C9A84C] to-[#8B6914] text-[#0A0806] px-6 py-5 rounded-sm shadow-2xl">
-              <div
-                className="text-3xl font-black leading-none tracking-tight"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
+            {/* TLV badge */}
+            <div className="absolute -bottom-6 -left-6 z-20 bg-gradient-to-br from-[#C9A84C] to-[#8B6914] text-[#0A0806] px-6 py-5 rounded-sm shadow-[0_10px_40px_rgba(0,0,0,0.6),0_0_30px_rgba(201,148,50,0.4)]">
+              <div className="text-3xl font-black leading-none tracking-tight" style={{ fontFamily: "var(--font-playfair)" }}>
                 TLV
               </div>
               <div className="text-[10px] font-black mt-1 tracking-[0.25em] uppercase">Barbershop</div>
             </div>
           </div>
 
-          {/* Text — left side */}
+          {/* Text column */}
           <div
-            className={`transition-all duration-1000 delay-300 ${
-              visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"
-            }`}
+            className={`transition-all duration-1000 delay-300 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"}`}
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="gold-line" />
@@ -117,14 +132,14 @@ export default function About() {
               לקבל ייעוץ אמיתי, ולצאת עם תספורת שמשדרת בדיוק מי הוא.
             </p>
 
-            {/* Highlights */}
+            {/* Highlights — glass style */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
               {teamHighlights.map((h) => (
                 <div
                   key={h.text}
-                  className="flex items-center gap-3 bg-[#161210] border border-[#231D17] px-4 py-3 rounded-sm"
+                  className="glass-panel flex items-center gap-3 px-4 py-3.5 rounded-sm hover:border-[#C9A84C]/30 transition-all duration-300"
                 >
-                  <span className="text-[#C9A84C] text-sm flex-shrink-0">{h.icon}</span>
+                  <span className="text-[#C9A84C] text-sm flex-shrink-0 shadow-[0_0_8px_rgba(201,148,50,0.4)]">{h.icon}</span>
                   <span className="text-[#F0EDE6] text-sm font-medium">{h.text}</span>
                 </div>
               ))}

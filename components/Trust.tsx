@@ -32,7 +32,7 @@ export default function Trust() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -41,17 +41,32 @@ export default function Trust() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 px-4 overflow-hidden"
+      className="relative py-28 px-4 overflow-hidden"
     >
-      {/* Warm atmospheric background */}
-      <div
-        className="absolute inset-0 wood-texture"
-        style={{ background: "linear-gradient(180deg, #0A0806 0%, #110D0A 60%, #0A0806 100%)" }}
-      />
+      {/* Deep atmospheric background */}
+      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #0A0806 0%, #130F0B 55%, #0A0806 100%)" }} />
       <div className="absolute inset-0 wood-texture" />
-      {/* Warm amber side glows */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#C9A84C]/5 to-transparent pointer-events-none" />
-      <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#C9A84C]/5 to-transparent pointer-events-none" />
+
+      {/* Strong spotlight from above */}
+      <div className="absolute top-0 left-0 right-0 h-[350px] gold-spotlight pointer-events-none" />
+
+      {/* Side amber glows */}
+      <div className="absolute top-0 right-0 w-[45%] h-full gold-spotlight-side-r pointer-events-none" />
+      <div className="absolute top-0 left-0  w-[45%] h-full gold-spotlight-side-l pointer-events-none" />
+
+      {/* Gold beam from top */}
+      <div className="gold-beam beam-drift absolute top-0 right-[30%] w-[200px] h-full pointer-events-none -skew-x-6" />
+
+      {/* Large plant decorations */}
+      <svg className="plant-accent absolute -top-10 -right-10 w-72 h-72 text-[#3D6B45]" viewBox="0 0 220 220" fill="currentColor">
+        <path d="M200,210 Q150,130 80,50 Q130,110 100,165 Q150,135 200,210Z" opacity="0.9"/>
+        <path d="M215,190 Q170,110 100,40 Q145,100 120,155 Q165,125 215,190Z" opacity="0.55"/>
+        <path d="M185,220 Q145,155 90,85 Q125,140 105,190 Q145,162 185,220Z" opacity="0.35"/>
+      </svg>
+      <svg className="plant-accent absolute -bottom-10 -left-10 w-64 h-64 text-[#4A7C59]" viewBox="0 0 200 200" fill="currentColor">
+        <path d="M10,190 Q60,110 130,50 Q85,100 105,155 Q60,125 10,190Z" opacity="0.9"/>
+        <path d="M5,170 Q45,90 115,30 Q75,80 90,135 Q50,108 5,170Z" opacity="0.5"/>
+      </svg>
 
       <div className="relative max-w-7xl mx-auto">
         {/* Section label */}
@@ -69,32 +84,35 @@ export default function Trust() {
           </h2>
         </div>
 
-        {/* Cards */}
+        {/* Glass cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {trustItems.map((item, i) => (
             <div
               key={i}
-              className={`card-luxury p-8 rounded-sm relative overflow-hidden transition-all duration-700 ${
-                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              className={`glass-panel card-3d p-8 rounded-sm relative overflow-hidden transition-all duration-700 ${
+                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-14"
               }`}
               style={{ transitionDelay: `${i * 130}ms` }}
             >
-              {/* Warm corner glow */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#C9A84C]/5 rounded-full blur-[30px]" />
+              {/* Inner corner gold glow */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#C9A84C]/6 rounded-full blur-[40px] pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-20 h-20 bg-[#C9A84C]/3 rounded-full blur-[30px] pointer-events-none" />
 
               <div className="relative">
-                {/* Icon with warm border */}
-                <div className="text-[#C9A84C] mb-5 inline-flex p-3.5 border border-[#C9A84C]/20 rounded-sm bg-[#C9A84C]/5">
+                <div className="text-[#C9A84C] mb-6 inline-flex p-4 border border-[#C9A84C]/25 rounded-sm bg-[#C9A84C]/8 shadow-[0_0_20px_rgba(201,148,50,0.1)]">
                   {item.icon}
                 </div>
                 <h3 className="text-[#F0EDE6] font-bold text-[17px] mb-3 leading-snug">{item.title}</h3>
                 <p className="text-[#9A8E7A] text-sm leading-relaxed">{item.desc}</p>
-                <div className="mt-6 w-8 h-px bg-gradient-to-r from-[#C9A84C]/50 to-transparent" />
+                <div className="mt-7 w-10 h-px bg-gradient-to-r from-[#C9A84C]/60 to-transparent" />
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Bottom fog */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 fog-bottom pointer-events-none" />
     </section>
   );
 }

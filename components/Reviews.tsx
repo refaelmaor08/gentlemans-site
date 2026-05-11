@@ -54,7 +54,7 @@ export default function Reviews() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.08 }
+      { threshold: 0.07 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -66,11 +66,24 @@ export default function Reviews() {
       ref={sectionRef}
       className="relative py-28 px-4 overflow-hidden"
     >
-      {/* Warm atmospheric bg */}
+      {/* Background */}
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #0A0806 0%, #130F0B 50%, #0A0806 100%)" }} />
       <div className="absolute inset-0 wood-texture" />
+
       {/* Center warm glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] rounded-full bg-[#C9A84C]/4 blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[550px] rounded-full bg-[#C9A84C]/5 blur-[160px] pointer-events-none" />
+
+      {/* Spotlight from top */}
+      <div className="absolute top-0 left-0 right-0 h-[300px] gold-spotlight pointer-events-none" />
+
+      {/* Gold beam */}
+      <div className="gold-beam beam-drift absolute top-0 left-[40%] w-[180px] h-full pointer-events-none -skew-x-4" />
+
+      {/* Plant decoration */}
+      <svg className="plant-accent absolute -top-8 -left-8 w-64 h-64 text-[#4A7C59]" viewBox="0 0 200 200" fill="currentColor">
+        <path d="M20,185 Q65,110 130,45 Q85,100 105,155 Q60,125 20,185Z" opacity="0.9"/>
+        <path d="M8,162 Q45,85 110,25 Q70,78 88,130 Q50,105 8,162Z" opacity="0.5"/>
+      </svg>
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
@@ -87,7 +100,6 @@ export default function Reviews() {
             <span className="text-gold-gradient">מספרים</span>
           </h2>
 
-          {/* Rating bar */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
             <div className="flex items-center gap-1">
               {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
@@ -102,17 +114,17 @@ export default function Reviews() {
           </div>
         </div>
 
-        {/* Reviews grid */}
+        {/* Glass review cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {reviews.map((review, i) => (
             <div
               key={i}
-              className={`card-luxury p-7 rounded-sm relative overflow-hidden
-                transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+              className={`glass-panel p-7 rounded-sm relative overflow-hidden
+                transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-14"}`}
               style={{ transitionDelay: `${i * 90}ms` }}
             >
-              {/* Warm top-right accent */}
-              <div className="absolute top-0 right-0 w-20 h-20 bg-[#C9A84C]/4 rounded-full blur-[20px]" />
+              {/* Inner glow */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#C9A84C]/5 rounded-full blur-[25px] pointer-events-none" />
 
               <div className="relative">
                 {/* Stars */}
@@ -121,22 +133,18 @@ export default function Reviews() {
                 </div>
 
                 {/* Large quote mark */}
-                <div
-                  className="absolute top-0 left-0 text-6xl leading-none text-[#C9A84C]/8 font-serif select-none"
-                  aria-hidden
-                >
+                <div className="absolute top-0 left-0 text-7xl leading-none text-[#C9A84C]/10 font-serif select-none" aria-hidden>
                   &ldquo;
                 </div>
 
-                <p className="text-[#9A8E7A] text-sm leading-[1.9] mb-6">
+                <p className="text-[#C8BFB0] text-sm leading-[1.95] mb-6">
                   &ldquo;{review.text}&rdquo;
                 </p>
 
                 <div className="gold-line-full mb-5" />
 
-                {/* Author */}
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#C9A84C] to-[#7A5810] flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(201,168,76,0.3)]">
+                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#C9A84C] to-[#7A5810] flex items-center justify-center flex-shrink-0 shadow-[0_0_20px_rgba(201,168,76,0.35)]">
                     <span className="text-[#0A0806] font-black text-sm">{review.initial}</span>
                   </div>
                   <div>
