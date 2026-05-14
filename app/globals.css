@@ -326,6 +326,89 @@ body {
 .fog-top    { background: linear-gradient(180deg, rgba(10,8,6,0.9) 0%, transparent 100%); }
 .fog-bottom { background: linear-gradient(0deg, rgba(10,8,6,0.9) 0%, transparent 100%); }
 
+/* ── EXPERIENCE FOG PARTICLES ── */
+@keyframes fog-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.12; }
+  50%       { transform: translate(28px, -18px) scale(1.14); opacity: 0.22; }
+}
+@keyframes fog-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.08; }
+  50%       { transform: translate(-22px, 16px) scale(1.12); opacity: 0.16; }
+}
+@keyframes fog-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.05; }
+  50%       { transform: translate(14px, -26px) scale(1.18); opacity: 0.10; }
+}
+
+.exp-fog-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.exp-fog-1 {
+  width: 600px; height: 380px;
+  top: 4%; left: -2%;
+  background: radial-gradient(ellipse, rgba(201,168,76,0.18) 0%, transparent 70%);
+  animation: fog-drift-1 14s ease-in-out infinite;
+}
+.exp-fog-2 {
+  width: 500px; height: 340px;
+  bottom: 8%; right: -2%;
+  background: radial-gradient(ellipse, rgba(212,146,42,0.14) 0%, transparent 70%);
+  animation: fog-drift-2 18s ease-in-out infinite 4s;
+}
+.exp-fog-3 {
+  width: 440px; height: 290px;
+  top: 36%; left: 32%;
+  background: radial-gradient(ellipse, rgba(201,168,76,0.09) 0%, transparent 70%);
+  animation: fog-drift-3 22s ease-in-out infinite 8s;
+}
+
+/* ── EXPERIENCE TITLE GLOW PULSE ── */
+@keyframes exp-glow-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.1); }
+}
+.exp-glow-pulse { animation: exp-glow-pulse 4.5s ease-in-out infinite; }
+
+/* ── GALLERY PREMIUM CARD ── */
+.gallery-card-premium {
+  position: relative;
+  transition:
+    transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.5s ease;
+  will-change: transform;
+}
+.gallery-card-premium::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 0px rgba(201,168,76,0);
+  transition: box-shadow 0.45s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+.gallery-card-premium:hover {
+  transform: scale(1.04) translateY(-12px);
+  box-shadow:
+    0 32px 90px rgba(0,0,0,0.72),
+    0 0 70px rgba(201,148,50,0.22),
+    0 0 140px rgba(201,148,50,0.08);
+  z-index: 10;
+}
+.gallery-card-premium:hover::after {
+  box-shadow: inset 0 0 0 2px rgba(201,168,76,0.7);
+}
+
+/* Gallery image zoom on hover */
+.gallery-img { transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1); }
+.gallery-card-premium:hover .gallery-img { transform: scale(1.1); }
+
+/* ── SCROLLBAR NONE ── */
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
 /* ── Mobile performance ── */
 @media (max-width: 768px) {
   .animate-pulse-gold  { animation: none; box-shadow: 0 0 22px rgba(201,148,50,0.45); }
@@ -336,6 +419,8 @@ body {
   .float-ornament      { animation: none; }
   .float-ornament-slow { animation: none; }
   .gold-shimmer-border::after { animation: none; }
+  .exp-fog-1, .exp-fog-2, .exp-fog-3 { animation: none; opacity: 0.07; }
+  .exp-glow-pulse { animation: none; opacity: 0.75; }
 
   /* Disable parallax entirely on mobile — set to static */
   .parallax-bg { transform: scale(1) !important; }
@@ -352,6 +437,13 @@ body {
 
   /* Faster transitions */
   .transition-all { transition-duration: 350ms !important; }
+}
+
+/* Gallery hover only meaningful on pointer devices */
+@media (hover: none) {
+  .gallery-card-premium:hover { transform: none; box-shadow: none; }
+  .gallery-card-premium:hover::after { box-shadow: none; }
+  .gallery-card-premium:hover .gallery-img { transform: none; }
 }
 
 /* Respect reduced motion preference */
