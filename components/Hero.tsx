@@ -116,11 +116,11 @@ export default function Hero() {
         </div>
 
         {/* Main headline */}
-        <h1 className={`mb-7 transition-all duration-1000 delay-200 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <h1 className={`mb-9 transition-all duration-1000 delay-200 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <span className="block text-[#F0EDE6] text-5xl md:text-7xl lg:text-[90px] font-black leading-[1.0] tracking-tight text-depth">
             התספורת שלך
           </span>
-          <span className="block text-gold-gradient text-5xl md:text-7xl lg:text-[90px] font-black leading-[1.05] tracking-tight mt-1">
+          <span className="block text-5xl md:text-7xl lg:text-[90px] font-black leading-[1.05] tracking-tight mt-2 text-hero-gold">
             היא הנוכחות שלך
           </span>
         </h1>

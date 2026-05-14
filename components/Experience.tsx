@@ -89,13 +89,22 @@ export default function Experience() {
           </div>
 
           {/* Headline + animated glow orb */}
-          <div className="relative mb-10">
+          <div className="relative mb-12">
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-[560px] h-[220px] rounded-full bg-[#C9A84C]/11 blur-[75px] exp-glow-pulse" />
+              <div className="w-[600px] h-[240px] rounded-full bg-[#C9A84C]/12 blur-[80px] exp-glow-pulse" />
             </div>
-            <h2 className="relative text-[2.5rem] md:text-[4.2rem] lg:text-[5.2rem] font-black leading-[1.12] text-depth tracking-tight">
-              <span className="block text-[#F0EDE6] mb-2">לא סתם תספורת —</span>
-              <span className="block text-gold-gradient">חוויה שמשנה נוכחות</span>
+            {/* Subtle dark halo behind the headline block for extra contrast */}
+            <div
+              className="absolute inset-0 -inset-x-10 rounded-xl pointer-events-none"
+              style={{ background: "radial-gradient(ellipse 80% 70% at 50% 50%, rgba(10,8,6,0.45) 0%, transparent 75%)" }}
+            />
+            <h2 className="relative font-black leading-[1.12] tracking-tight">
+              <span className="block text-[2.5rem] md:text-[4.2rem] lg:text-[5.2rem] text-[#F0EDE6] text-depth mb-4">
+                לא סתם תספורת —
+              </span>
+              <span className="block text-[2.1rem] md:text-[3.6rem] lg:text-[4.5rem] text-hero-gold">
+                חוויה שמשנה נוכחות
+              </span>
             </h2>
           </div>
 

@@ -9,6 +9,7 @@ import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import StickyButton from "@/components/StickyButton";
+import Accessibility from "@/components/Accessibility";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       </main>
       <Footer />
       <StickyButton />
+      <Accessibility />
     </>
   );
 }
