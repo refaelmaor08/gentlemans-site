@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const galleryImages = [
-  { src: "/images/vip-client.jpg", alt: "לקוח VIP — פייד מדויק של GENTLEMAN'S TLV", priority: true },
+  { src: "/images/vip-client.jpeg", alt: "לקוח VIP — פייד מדויק של GENTLEMAN'S TLV", priority: true },
   { src: "/images/fade1.webp", alt: "עבודה של GENTLEMAN'S TLV", priority: false },
   { src: "/images/fade2.webp", alt: "עבודה של GENTLEMAN'S TLV", priority: false },
   { src: "/images/fade3.webp", alt: "עבודה של GENTLEMAN'S TLV", priority: false },
