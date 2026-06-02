@@ -36,7 +36,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-[#9A8E7A] text-sm leading-relaxed max-w-xs">
-              מספרת גברים יוקרתית בלב תל אביב. כי המראה שלך הוא הנוכחות שלך.
+              מספרת פרימיום עם אופי גברי בלב תל אביב. אווירה מדויקת, שירות אישי ותוצאה חדה — מקום שמתאים לכל מי שאוהב/ת סטייל נקי ומוקפד.
             </p>
             <p
               className="text-[#C9A84C]/35 text-xs mt-4 tracking-widest"

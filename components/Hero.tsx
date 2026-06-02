@@ -36,7 +36,7 @@ export default function Hero() {
         <div ref={bgRef} className="absolute inset-0 parallax-bg" style={{ willChange: "transform" }}>
           <Image
             src="/images/hero.webp"
-            alt="GENTLEMAN'S TLV — מספרת גברים יוקרתית"
+            alt="GENTLEMAN'S TLV — מספרת פרימיום בדיזנגוף תל אביב"
             fill
             className="object-cover object-center"
             priority
@@ -128,7 +128,7 @@ export default function Hero() {
         {/* Sub */}
         <p className={`text-[#C8BFB0] text-base md:text-xl font-light mb-12 max-w-xl mx-auto leading-relaxed transition-all duration-1000 delay-[380ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"} text-depth`}>
           <span className="text-[#C9A84C]/90 font-semibold">GENTLEMAN&apos;S TLV</span>
-          {" "}— מספרת גברים יוקרתית בדיזנגוף, תל אביב
+          {" "}— מספרת פרימיום עם אופי גברי בדיזנגוף, תל אביב
         </p>
 
         {/* CTAs */}
@@ -148,16 +148,16 @@ export default function Hero() {
             className="btn-whatsapp flex items-center justify-center gap-3 px-8 py-4 text-base font-semibold rounded-sm w-full sm:w-auto"
           >
             <WhatsAppIcon />
-            דבר איתנו בוואטסאפ
+            דברו איתנו בוואטסאפ
           </a>
         </div>
 
         {/* Stats row — glass backed */}
         <div className={`transition-all duration-1000 delay-[680ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
           <div className="inline-flex items-center gap-0 glass-panel rounded-sm px-2 py-1">
-            <StatItem number="2,000+" label="לקוחות מרוצים" />
+            <StatItem number="8,500+" label="לקוחות מרוצים" />
             <div className="w-px h-12 bg-[#C9A84C]/18 flex-shrink-0 mx-2" />
-            <StatItem number="100%" label="גברים בלבד" />
+            <StatItem number="100%" label="סטייל אישי" />
             <div className="w-px h-12 bg-[#C9A84C]/18 flex-shrink-0 mx-2" />
             <StatItem number="#1" label="בדיזנגוף" />
           </div>

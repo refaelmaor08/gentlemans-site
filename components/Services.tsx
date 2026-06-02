@@ -4,27 +4,33 @@ import { useEffect, useRef, useState } from "react";
 
 const services = [
   {
+    icon: <FadeIcon />,
+    title: "פיידים מדויקים",
+    desc: "High Fade, Mid Fade, Taper Fade ו־Low Fade — כל מעבר מבוצע בקו נקי, מדויק ומותאם למבנה הראש והסטייל שלך.",
+    tag: "הכי מבוקש",
+  },
+  {
     icon: <CutIcon />,
-    title: "תספורת גברים",
-    desc: "תספורת קלאסית מקצועית, מותאמת לצורת הפנים ולסגנון האישי שלך. כל חתך הוא עבודת אמנות שנשארת חדה שבוע שלם.",
+    title: "תספורות קלאסיות",
+    desc: "מראה נקי, אלגנטי ומסודר שמתאים לעבודה, לאירועים וליום־יום. קלאסיקה שלא יוצאת מהאופנה.",
     tag: null,
   },
   {
-    icon: <FadeIcon />,
-    title: "פיידים מדויקים",
-    desc: "היי פייד, מיד פייד, טייפר — כל מעבר מבוצע עם דיוק מוחלט. הניגוד הנכון, הקו הנכון, הסגנון שלך.",
-    tag: "הכי מבוקש",
+    icon: <LongHairIcon />,
+    title: "שיער ארוך",
+    desc: "עיצוב, דירוג וסידור לשיער ארוך בצורה טבעית ומחמיאה — בלי לאבד את האופי והנפח של השיער.",
+    tag: null,
   },
   {
     icon: <BeardIcon />,
     title: "עיצוב זקן",
-    desc: "עיצוב זקן מקצועי עם תשבורת, שמן ספרות ועבודת קו. הזקן שלך ישלים לוק שמשדר אופי אמיתי.",
+    desc: "סידור זקן מדויק, קווים נקיים והתאמה למבנה הפנים — כדי שהזקן ייראה מסודר, חד וטבעי.",
     tag: null,
   },
   {
     icon: <StyleConsultIcon />,
-    title: "התאמת סטייל אישי",
-    desc: "ייעוץ מעמיק לפני כל תספורת — ניתוח פנים, המלצת סגנון, ובניית הלוק שמותאם בדיוק לך. כלול בכל ביקור.",
+    title: "סטייל אישי",
+    desc: "לא בטוח מה מתאים לך? הצוות שלנו יעזור לבחור תספורת שמתאימה למבנה הפנים, לשיער ולסגנון שלך.",
     tag: "כלול בכל ביקור",
   },
 ];
@@ -82,10 +88,10 @@ export default function Services() {
           </p>
         </div>
 
-        {/* 2×2 glass cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* service cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {services.map((service, i) => (
-            <ServiceCard key={i} service={service} index={i} visible={visible} />
+            <ServiceCard key={i} service={service} index={i} visible={visible} isLast={i === services.length - 1} />
           ))}
         </div>
 
@@ -109,10 +115,12 @@ function ServiceCard({
   service,
   index,
   visible,
+  isLast,
 }: {
   service: (typeof services)[0];
   index: number;
   visible: boolean;
+  isLast?: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
 
@@ -120,7 +128,7 @@ function ServiceCard({
     <div
       className={`glass-panel relative p-9 md:p-10 rounded-sm overflow-hidden cursor-default
         transition-all duration-600
-        ${hovered ? "" : ""}
+        ${isLast ? "md:col-span-2 md:max-w-lg md:mx-auto xl:col-span-1 xl:max-w-none xl:mx-0" : ""}
         ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
       `}
       style={{ transitionDelay: `${index * 120}ms` }}
@@ -158,6 +166,16 @@ function ServiceCard({
   );
 }
 
+function LongHairIcon() {
+  return (
+    <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+      <circle cx="12" cy="5" r="2.5" />
+      <path strokeLinecap="round" d="M9 8.5C7 9.5 6 12 6 15c0 2 .5 3.5 1.5 5" />
+      <path strokeLinecap="round" d="M12 8.5V19.5" />
+      <path strokeLinecap="round" d="M15 8.5c2 1 3 3.5 3 6 0 2-.5 3.5-1.5 5" />
+    </svg>
+  );
+}
 function CutIcon() {
   return (
     <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>

@@ -107,9 +107,9 @@ export default function Reviews() {
             <div className="flex items-center gap-3 text-sm text-[#9A8E7A]">
               <span className="font-black text-[#C9A84C] text-lg">5.0</span>
               <span className="text-[#231D17]">|</span>
-              <span>מעל 200 ביקורות</span>
+              <span>700+ ביקורות והמלצות</span>
               <span className="text-[#231D17]">|</span>
-              <span className="text-[#C9A84C] font-semibold">2,000+ לקוחות מרוצים</span>
+              <span className="text-[#C9A84C] font-semibold">8,500+ לקוחות מרוצים</span>
             </div>
           </div>
         </div>
