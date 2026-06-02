@@ -4,11 +4,12 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const galleryImages = [
-  { src: "/images/fade1.webp", alt: "עבודה של GENTLEMAN'S TLV" },
-  { src: "/images/fade2.webp", alt: "עבודה של GENTLEMAN'S TLV" },
-  { src: "/images/fade3.webp", alt: "עבודה של GENTLEMAN'S TLV" },
-  { src: "/images/fade4.webp", alt: "עבודה של GENTLEMAN'S TLV" },
-  { src: "/images/fade5.webp", alt: "עבודה של GENTLEMAN'S TLV" },
+  { src: "/images/vip-client.jpg", alt: "לקוח VIP — פייד מדויק של GENTLEMAN'S TLV", priority: true },
+  { src: "/images/fade1.webp", alt: "עבודה של GENTLEMAN'S TLV", priority: false },
+  { src: "/images/fade2.webp", alt: "עבודה של GENTLEMAN'S TLV", priority: false },
+  { src: "/images/fade3.webp", alt: "עבודה של GENTLEMAN'S TLV", priority: false },
+  { src: "/images/fade4.webp", alt: "עבודה של GENTLEMAN'S TLV", priority: false },
+  { src: "/images/fade5.webp", alt: "עבודה של GENTLEMAN'S TLV", priority: false },
 ];
 
 export default function Gallery() {
@@ -69,9 +70,9 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* ── DESKTOP: uniform 5-column editorial grid ── */}
+        {/* ── DESKTOP: uniform 6-column editorial grid ── */}
         <div
-          className={`hidden lg:grid grid-cols-5 gap-4 transition-all duration-700 delay-150 ${
+          className={`hidden lg:grid grid-cols-6 gap-4 transition-all duration-700 delay-150 ${
             visible ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -86,10 +87,11 @@ export default function Gallery() {
                 src={img.src}
                 alt={img.alt}
                 fill
-                loading="lazy"
+                priority={img.priority}
+                loading={img.priority ? "eager" : "lazy"}
                 className="object-cover gallery-img"
                 quality={85}
-                sizes="20vw"
+                sizes="17vw"
               />
               {/* Dark gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0806]/85 via-[#0A0806]/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -129,7 +131,8 @@ export default function Gallery() {
                   src={img.src}
                   alt={img.alt}
                   fill
-                  loading="lazy"
+                  priority={img.priority}
+                  loading={img.priority ? "eager" : "lazy"}
                   className="object-cover"
                   quality={80}
                   sizes="70vw"
