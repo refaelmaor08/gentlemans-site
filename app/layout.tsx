@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Heebo, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
@@ -17,28 +17,45 @@ const playfair = Playfair_Display({
   style: ["normal", "italic"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://gentlemans-tlv.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://gentlemanstlv.com";
+
+// The existing GENTLEMAN'S TLV wordmark logo, used exactly as it ships in the repo.
+const ogImage = {
+  url: "/images/logo.jpg",
+  width: 1206,
+  height: 2069,
+  alt: "GENTLEMAN'S TLV",
+  type: "image/jpeg",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0A0806",
+};
 
 export const metadata: Metadata = {
-  themeColor: "#0A0806",
   metadataBase: new URL(siteUrl),
   title: "GENTLEMAN'S TLV | מספרת פרימיום בדיזנגוף – תל אביב",
   description:
     "מספרת פרימיום עם אופי גברי בדיזנגוף 237, תל אביב. פיידים מדויקים, תספורות קלאסיות, עיצוב זקן וסטייל אישי ברמה הגבוהה ביותר. קבע תור עכשיו.",
   keywords: "מספרת תל אביב, barbershop tel aviv, פייד, תספורת, דיזנגוף, היי פייד, עיצוב זקן, סטייל אישי",
+  applicationName: "GENTLEMAN'S TLV",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Gentlemans TLV – Barbershop",
+    title: "GENTLEMAN'S TLV – Barbershop",
     description: "מספרת פרימיום עם אופי גברי בדיזנגוף, תל אביב. קביעת תורים אונליין.",
     url: siteUrl,
-    siteName: "Gentlemans TLV",
+    siteName: "GENTLEMAN'S TLV",
     locale: "he_IL",
     type: "website",
-    images: [
-      {
-        url: "/images/logo.jpg",
-        alt: "Gentlemans TLV – Barbershop",
-      },
-    ],
+    images: [ogImage],
+  },
+  twitter: {
+    card: "summary",
+    title: "GENTLEMAN'S TLV – Barbershop",
+    description: "מספרת פרימיום עם אופי גברי בדיזנגוף, תל אביב. קביעת תורים אונליין.",
+    images: [ogImage.url],
   },
 };
 
